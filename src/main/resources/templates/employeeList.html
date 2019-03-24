@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <link type="text/css" rel="stylesheet" href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css" th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Book List</h1>
+    <table  class="table table-striped">
+   
+   		<thead>
+   	<tr>
+    	<th>firstName</th>
+    	<th>lastName</th>
+    	<th>email</th>    	
+    	<th>phone</th>
+    	<th>Department</th>
+    	<th>StartJob</th>
+    	<th>AddTask</th>
+	<tr/>
+	<thead/>
+	
+	<tbody>
+    	<tr th:each = "employee : ${employees}">
+    		<td th:text="${employee.firstName}"></td>
+    		<td th:text="${employee.lastName}"></td>
+    		<td th:text="${employee.email}"></td>
+    		<td th:text="${employee.phone}"></td>
+    		<td th:text="${employee.email}"></td>
+    		<td th:text="${employee.Department.name}"></td>
+    		<td th:text="${employee.StartJob.date}"></td>
+    		<td th:text="${employee.AddTask.budget}"></td>
+    	
+    	</tr>
+    	</tbody>
+     </table>
+  	<button class="btn btn-success"><a href="#" style="text-decoration:none;">XXX</a></button>
+</body>
+</html>
