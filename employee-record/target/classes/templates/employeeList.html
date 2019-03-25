@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet"
+	href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css"
+	th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+		<!-- Fontawesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div  style="margin: 30px">
+	    <table class="table table-striped">
+				<thead>
+					<tr>
+						<th>FirstName</th>
+						<th>LastName</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Department</th>
+				<!-- 	<th>AddTask</th>  -->
+						
+					<tr />
+				<thead />
+	
+				<tbody>
+					<tr th:each="employeeList : ${employeelists}">
+	
+						<td th:text="${employeeList.firstName}"></td>
+						<td th:text="${employeeList.lastName}"></td>
+						<td th:text="${employeeList.email}"></td>
+						<td th:text="${employeeList.phone}"></td>
+						<td th:text="${employeeList.department.name}"></td>
+				<!-- 	<td th:text="${employeeList.addtask.taskName}"></td>   -->	
+	
+					</tr>
+				</tbody>
+			</table>
+		<div>
+			<a class= "btn btn-primary" href = "/addEmployee"><i class="fa fa-plus"></i> AddEmployee</a>
+		</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Studentlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet"
+	href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css"
+	th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+	<!-- Fontawesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	
+	<div  style="margin: 30px">
+		<h1>Add student</h1>
+		<form th:object="${employee}" th:action="@{save}" action="#" method="post">
+			<div class="form-row">
+				<div class="col-md-4 mb-3">
+			  		<label for="fname">FirstName</label>
+					<input class="form-control" type="text" id="fname" th:field="*{firstName}" />
+				</div>
+				<div class="col-md-4 mb-3">
+			  		<label for="lname">LastName</label>
+					<input class="form-control" type="text" id="lname" th:field="*{lastName}" />
+				</div>
+				<div class="col-md-4 mb-3">
+			  		<label for="email">Email</label>
+					<input class="form-control" type="text" th:field="*{email}" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="fname">Phone</label>
+					<input class="form-control" type="text" id="phone" th:field="*{phone}" />
+				</div>
+				<div class="col-md-4 mb-3">
+					<label for="deplist">Department</label>
+						 <select id="deplist" th:field="*{department}" class="form-control">
+			       			<option th:each="department: ${departments}" th:value="${department.departmentid}" th:text="${department.name}"></option>
+			    		</select>
+    			</div>
+	<!-- 		<div class="col-md-4 mb-3">
+					<label for="tasklis">AddTask</label>
+						 <select id="tasklis" th:field="*{addtasks}" class="form-control">
+			       			<option th:each="addtasks: ${addtasks}" th:value="${addtasks.addtaskid}" th:text="${addtasks.taskName}"></option>
+			    		</select>
+    			</div> 
+     -->	  			
+				<button class = "btn btn-info" type="submit"><i class="fa fa-save"></i> Save</button>
+			</div>
+		</form>
+	</div>
+	
+</body>
+</html>
