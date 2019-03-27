@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Employee List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet"
+	href="css/bootstrap-4.2.1-dist/css/bootstrap.min.css"
+	th:href="@{css/bootstrap-4.2.1-dist/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div style="margin: 30px">
+		<h1>Employee List</h1>
+
+		<div style="margin: 30px">
+			<h3 th:inline="text">Welcome
+				[[${#httpServletRequest.remoteUser}]]</h3>
+		</div>
+		<div style="margin: 30px">
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+
+			</form>
+
+		</div>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+
+					<th>FirstName</th>
+					<th>Family Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Dwelling</th>
+					<th sec:authorize="hasRole('ADMIN')"></th>
+					<th></th>
+				<tr />
+			<thead />
+
+			<tbody>
+				<tr th:each="employee : ${employees}">
+
+					<td th:text="${employee.fname}"></td>
+					<td th:text="${employee.lname}"></td>
+					<td th:text="${employee.email}"></td>
+					<td th:text="${employee.phone}"></td>
+					<td th:text="${employee.address}"></td>
+					<td th:text="${employee.department.name}"></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a
+						th:href="@{/delete/{id}(id=${employee.id})}"
+						class="btn btn-xs btn-danger">Delete</a></td>
+
+					<td><a th:href="@{/edit/{id}(id=${employee.id})}"
+						class="btn btn-xs btn-danger">Update</a></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<a sec:authorize="hasAuthority('ADMIN')" href="/add" class="btn btn-sm btn-primary">AddEmployees</a>
+		
+	</div>
+</body>
+</html>
